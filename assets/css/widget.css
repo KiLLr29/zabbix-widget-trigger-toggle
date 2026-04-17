@@ -2,6 +2,12 @@
     padding: 8px 10px;
 }
 
+.trigger-build-info {
+    margin-bottom: 8px;
+    font-size: 11px;
+    opacity: 0.7;
+}
+
 .trigger-toggle-wrap {
     margin-bottom: 10px;
     text-align: center;
