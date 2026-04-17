@@ -17,14 +17,6 @@ class CWidgetTriggerToggle extends CWidget {
                 }
 
                 const action = button.dataset.toggleAction;
-                const confirm_text = action === 'disable'
-                    ? 'Disable all matched triggers?'
-                    : 'Enable all matched triggers?';
-
-                if (!window.confirm(confirm_text)) {
-                    return;
-                }
-
                 this._pending_toggle_action = action;
                 this._startUpdating();
             }
