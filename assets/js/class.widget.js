@@ -1,6 +1,8 @@
 class CWidgetTriggerToggle extends CWidget {
 
     onStart() {
+        super.onStart();
+
         this._pending_toggle_action = null;
         this._events = {
             click: (event) => {
@@ -26,11 +28,13 @@ class CWidgetTriggerToggle extends CWidget {
     }
 
     onActivate() {
+        super.onActivate();
         this._target.addEventListener('click', this._events.click);
     }
 
     onDeactivate() {
         this._target.removeEventListener('click', this._events.click);
+        super.onDeactivate();
     }
 
     getUpdateRequestData() {
