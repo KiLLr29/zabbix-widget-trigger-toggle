@@ -34,7 +34,7 @@ $summary = (new CDiv([
 ]))->addClass('trigger-summary');
 
 $content = [
-	(new CDiv(_('ORS build 7.0-10')))->addClass('trigger-build-info'),
+	(new CDiv(_('ORS build 7.0-12')))->addClass('trigger-build-info'),
 	(new CDiv($toggle_button))->addClass('trigger-toggle-wrap'),
 	$summary
 ];

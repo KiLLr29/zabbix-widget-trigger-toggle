@@ -21,6 +21,6 @@ use Zabbix\Core\CWidget;
 class Widget extends CWidget {
 
 	public function getDefaultName(): string {
-		return _('Trigger toggle ORS 7.0-10');
+		return _('Trigger toggle ORS 7.0-12');
 	}
 }
