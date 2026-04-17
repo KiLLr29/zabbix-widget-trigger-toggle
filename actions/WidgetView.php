@@ -1,6 +1,6 @@
 <?php declare(strict_types = 0);
 
-namespace Modules\ItemMAX\Actions;
+namespace Modules\TriggerToggleORS\Actions;
 
 use API;
 use CControllerDashboardWidgetView;

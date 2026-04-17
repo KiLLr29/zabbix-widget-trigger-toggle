@@ -1,6 +1,6 @@
 <?php declare(strict_types = 0);
 
-namespace Modules\ItemMAX\Includes;
+namespace Modules\TriggerToggleORS\Includes;
 
 use Zabbix\Widgets\CWidgetForm;
 use Zabbix\Widgets\Fields\CWidgetFieldCheckBox;

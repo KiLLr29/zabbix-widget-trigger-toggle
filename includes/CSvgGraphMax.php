@@ -14,7 +14,7 @@
 **/
 
 
-namespace Modules\ItemMAX\Includes;
+namespace Modules\TriggerToggleORS\Includes;
 
 use CMacrosResolverHelper;
 use CMathHelper;

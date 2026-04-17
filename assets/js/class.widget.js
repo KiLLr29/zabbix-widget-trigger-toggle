@@ -1,4 +1,4 @@
-class CWidgetTriggerToggle extends CWidget {
+class CWidgetTriggerToggleORS extends CWidget {
 
     onStart() {
         super.onStart();

@@ -14,7 +14,7 @@
 **/
 
 
-namespace Modules\ItemMAX;
+namespace Modules\TriggerToggleORS;
 
 use Zabbix\Core\CWidget;
 
