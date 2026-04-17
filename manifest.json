@@ -1,0 +1,31 @@
+{
+    "manifest_version": 2.0,
+    "id": "itemmax",
+    "type": "widget",
+    "name": "Trigger Toggle",
+    "namespace": "ItemMAX",
+    "version": "7.0-2",
+    "author": "ORS",
+    "description": "Dashboard widget to mass enable/disable triggers by filters.",
+    "widget": {
+        "size": {
+            "width": 6,
+            "height": 4
+        },
+        "js_class": "CWidgetTriggerToggle"
+    },
+    "actions": {
+        "widget.itemmax.view": {
+            "class": "WidgetView"
+        }
+    },
+    "assets": {
+        "js": [
+            "class.widget.js"
+        ],
+        "css": [
+            "widget.css",
+            "form.css"
+        ]
+    }
+}
