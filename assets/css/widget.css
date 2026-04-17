@@ -68,3 +68,10 @@
     color: #c62828;
     font-weight: 700;
 }
+
+/* Keep dashboard edit interactions (move/resize/menu) handled by Zabbix, not widget content. */
+body.dashboard-is-edit-mode .trigger-toggle-widget,
+body.dashboard-edit-mode .trigger-toggle-widget,
+body.dashboard-mode-edit .trigger-toggle-widget {
+    pointer-events: none;
+}

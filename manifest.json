@@ -4,7 +4,7 @@
     "type": "widget",
     "name": "Trigger Toggle",
     "namespace": "ItemMAX",
-    "version": "7.0-2",
+    "version": "7.0-3",
     "author": "ORS",
     "description": "Dashboard widget to mass enable/disable triggers by filters.",
     "widget": {
