@@ -18,6 +18,9 @@
 		new CWidgetFieldTagsView($data['fields']['tags'])
 	)
 	->addField(
+		new CWidgetFieldCheckBoxView($data['fields']['show_summary'])
+	)
+	->addField(
 		new CWidgetFieldCheckBoxView($data['fields']['show_trigger_list'])
 	)
 	->show();

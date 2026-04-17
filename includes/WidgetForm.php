@@ -22,6 +22,9 @@ class WidgetForm extends CWidgetForm {
 				new CWidgetFieldTags('tags', _('Tags'))
 			)
 			->addField(
+				(new CWidgetFieldCheckBox('show_summary', _('Show summary')))->setDefault(1)
+			)
+			->addField(
 				(new CWidgetFieldCheckBox('show_trigger_list', _('Show trigger list')))->setDefault(1)
 			);
 	}

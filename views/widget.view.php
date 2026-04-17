@@ -34,10 +34,12 @@ $summary = (new CDiv([
 ]))->addClass('trigger-summary');
 
 $content = [
-	(new CDiv(_('ORS build 7.0-12')))->addClass('trigger-build-info'),
-	(new CDiv($toggle_button))->addClass('trigger-toggle-wrap'),
-	$summary
+	(new CDiv($toggle_button))->addClass('trigger-toggle-wrap')
 ];
+
+if ($data['show_summary']) {
+	$content[] = $summary;
+}
 
 if ($data['toggle_error'] !== null) {
 	$content[] = (new CMessageBox(ZBX_STYLE_MSG_BAD, $data['toggle_error']))->toString();
