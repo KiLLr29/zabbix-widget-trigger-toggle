@@ -22,7 +22,7 @@ $toggle_form = (new CForm('post', (new Curl('zabbix.php'))
 	->getUrl()))
 	->addVar('toggle_action', $data['next_toggle_action'])
 	->addVar('triggerids', $data['triggerids_csv'])
-	->addVar('return_url', $_SERVER['HTTP_REFERER'] ?? '')
+	->addVar('return_url', $_SERVER['REQUEST_URI'] ?? '')
 	->addItem($toggle_button);
 
 $summary = (new CDiv([
