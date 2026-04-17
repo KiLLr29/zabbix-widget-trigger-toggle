@@ -13,17 +13,10 @@ $is_enabled = (bool) $data['is_enabled'];
 $state_label = $is_enabled ? _('Enabled') : _('Disabled');
 $state_class = $is_enabled ? 'state-enabled' : 'state-disabled';
 
-$toggle_button = (new CSubmit('trigger_toggle_submit', $state_label))
+$toggle_button = (new CButton('trigger_toggle', $state_label))
 	->addClass('js-trigger-toggle')
-	->addClass($state_class);
-
-$toggle_form = (new CForm('post', (new Curl('zabbix.php'))
-	->setArgument('action', 'widget.trigger_toggle_ors.toggle')
-	->getUrl()))
-	->addVar('toggle_action', $data['next_toggle_action'])
-	->addVar('triggerids', $data['triggerids_csv'])
-	->addVar('return_url', $_SERVER['REQUEST_URI'] ?? '')
-	->addItem($toggle_button);
+	->addClass($state_class)
+	->setAttribute('data-toggle-action', $data['next_toggle_action']);
 
 $summary = (new CDiv([
 	(new CDiv([
@@ -41,7 +34,7 @@ $summary = (new CDiv([
 ]))->addClass('trigger-summary');
 
 $content = [
-	(new CDiv($toggle_form))->addClass('trigger-toggle-wrap')
+	(new CDiv($toggle_button))->addClass('trigger-toggle-wrap')
 ];
 
 if ($data['show_summary']) {
