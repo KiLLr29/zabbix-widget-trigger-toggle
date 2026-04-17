@@ -1,13 +1,10 @@
 .trigger-toggle-widget {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    padding: 8px;
+    padding: 8px 10px;
 }
 
 .trigger-toggle-wrap {
-    display: flex;
-    justify-content: center;
+    margin-bottom: 10px;
+    text-align: center;
 }
 
 .js-trigger-toggle {
@@ -30,16 +27,24 @@
 }
 
 .trigger-summary {
-    display: grid;
-    gap: 8px;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+    margin-bottom: 10px;
 }
 
 .trigger-summary-item {
+    display: table-cell;
+    vertical-align: top;
     background: rgba(127, 127, 127, 0.08);
     border-radius: 6px;
-    padding: 8px 10px;
+    padding: 8px 6px;
     text-align: center;
+    border-right: 6px solid transparent;
+}
+
+.trigger-summary-item:last-child {
+    border-right: none;
 }
 
 .trigger-summary-item .label {
@@ -55,8 +60,9 @@
 }
 
 .trigger-list-wrap {
-    overflow: auto;
-    max-height: 100%;
+    max-height: 240px;
+    overflow-y: auto;
+    overflow-x: auto;
 }
 
 .status-enabled {
@@ -67,11 +73,4 @@
 .status-disabled {
     color: #c62828;
     font-weight: 700;
-}
-
-/* Keep dashboard edit interactions (move/resize/menu) handled by Zabbix, not widget content. */
-body.dashboard-is-edit-mode .trigger-toggle-widget,
-body.dashboard-edit-mode .trigger-toggle-widget,
-body.dashboard-mode-edit .trigger-toggle-widget {
-    pointer-events: none;
 }
