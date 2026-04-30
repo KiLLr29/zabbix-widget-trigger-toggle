@@ -41,10 +41,6 @@ $toggle_form = (new CForm('post', (new Curl('zabbix.php'))
 
 $summary = (new CDiv([
 	(new CDiv([
-		(new CSpan(_('Matched triggers')))->addClass('label'),
-		(new CSpan((string) $data['total_count']))->addClass('value')
-	]))->addClass('trigger-summary-item'),
-	(new CDiv([
 		(new CSpan(_('Enabled')))->addClass('label'),
 		(new CSpan((string) $data['enabled_count']))->addClass('value')
 	]))->addClass('trigger-summary-item'),
