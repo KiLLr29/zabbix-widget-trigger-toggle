@@ -11,18 +11,17 @@
         "size": {
             "width": 6,
             "height": 4
-        },
-        "js_class": "CWidgetTriggerToggleORS"
+        }
     },
     "actions": {
         "widget.trigger_toggle_ors.view": {
             "class": "WidgetView"
+        },
+        "widget.trigger_toggle_ors.toggle": {
+            "class": "WidgetToggle"
         }
     },
     "assets": {
-        "js": [
-            "class.widget.7_0_24.js"
-        ],
         "css": [
             "widget.7_0_13.css",
             "form.css"

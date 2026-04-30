@@ -56,6 +56,7 @@ class WidgetView extends CControllerDashboardWidgetView {
 			'disabled_count' => $disabled_count,
 			'is_enabled' => $is_enabled,
 			'next_toggle_action' => $is_enabled ? 'disable' : 'enable',
+			'triggerids_csv' => implode(',', array_column($triggers, 'triggerid')),
 			'toggle_error' => $toggle_error,
 			'show_summary' => (bool) ($this->fields_values['show_summary'] ?? true),
 			'show_trigger_list' => (bool) ($this->fields_values['show_trigger_list'] ?? true)

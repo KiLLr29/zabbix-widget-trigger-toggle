@@ -77,3 +77,13 @@
     color: #c62828;
     font-weight: 700;
 }
+
+body.dashboard-is-edit-mode .trigger-toggle-widget,
+body.dashboard-edit-mode .trigger-toggle-widget,
+body.dashboard-mode-edit .trigger-toggle-widget,
+.dashboard-is-edit-mode .trigger-toggle-widget,
+.dashboard-edit-mode .trigger-toggle-widget,
+.dashboard-mode-edit .trigger-toggle-widget,
+.ui-draggable.ui-resizable .trigger-toggle-widget {
+    pointer-events: none;
+}
