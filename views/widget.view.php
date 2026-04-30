@@ -13,6 +13,19 @@ $is_enabled = (bool) $data['is_enabled'];
 $state_label = $is_enabled ? _('Enabled') : _('Disabled');
 $state_class = $is_enabled ? 'state-enabled' : 'state-disabled';
 
+$default_return_url = 'zabbix.php?action=dashboard.view';
+$dashboardid = (string) ($data['dashboardid'] ?? '');
+
+if ($dashboardid !== '' && ctype_digit($dashboardid)) {
+	$default_return_url .= '&dashboardid='.$dashboardid;
+}
+
+$return_url = $_SERVER['HTTP_REFERER'] ?? '';
+
+if (!is_string($return_url) || $return_url === '') {
+	$return_url = $default_return_url;
+}
+
 $toggle_button = (new CSubmit('trigger_toggle_submit', $state_label))
 	->addClass('js-trigger-toggle')
 	->addClass($state_class);
@@ -22,7 +35,8 @@ $toggle_form = (new CForm('post', (new Curl('zabbix.php'))
 	->getUrl()))
 	->addVar('toggle_action', $data['next_toggle_action'])
 	->addVar('triggerids', $data['triggerids_csv'])
-	->addVar('return_url', $_SERVER['HTTP_REFERER'] ?? '')
+	->addVar('dashboardid', $dashboardid)
+	->addVar('return_url', $return_url)
 	->addItem($toggle_button);
 
 $summary = (new CDiv([

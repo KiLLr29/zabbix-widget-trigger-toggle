@@ -16,6 +16,7 @@ class WidgetToggle extends CController {
         return $this->validateInput([
             'toggle_action' => 'required|in enable,disable',
             'triggerids' => 'string',
+            'dashboardid' => 'string',
             'return_url' => 'string'
         ]);
     }
@@ -56,13 +57,10 @@ class WidgetToggle extends CController {
             }
         }
 
-        $return_url = $this->getInput('return_url', '');
-
-        if (!is_string($return_url) || $return_url === '') {
-            $return_url = (new \Curl('zabbix.php'))
-                ->setArgument('action', 'dashboard.view')
-                ->getUrl();
-        }
+        $return_url = $this->normalizeReturnUrl(
+            $this->getInput('return_url', ''),
+            (string) $this->getInput('dashboardid', '')
+        );
 
         $this->setResponse(new CControllerResponseRedirect($return_url));
     }
@@ -87,5 +85,27 @@ class WidgetToggle extends CController {
 
     private function getDisabledStatus(): int {
         return defined('TRIGGER_STATUS_DISABLED') ? TRIGGER_STATUS_DISABLED : 1;
+    }
+
+    private function normalizeReturnUrl($return_url, string $dashboardid): string {
+        if (is_string($return_url) && $return_url !== '') {
+            $parts = parse_url($return_url);
+
+            if (is_array($parts) && array_key_exists('query', $parts) && is_string($parts['query'])) {
+                parse_str($parts['query'], $query);
+
+                if (($query['action'] ?? '') === 'dashboard.view') {
+                    return $return_url;
+                }
+            }
+        }
+
+        $safe_url = 'zabbix.php?action=dashboard.view';
+
+        if ($dashboardid !== '' && preg_match('/^\d+$/', $dashboardid) === 1) {
+            $safe_url .= '&dashboardid='.$dashboardid;
+        }
+
+        return $safe_url;
     }
 }
