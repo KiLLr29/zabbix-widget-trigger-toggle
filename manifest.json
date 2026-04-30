@@ -4,14 +4,15 @@
     "type": "widget",
     "name": "Trigger Toggle ORS",
     "namespace": "TriggerToggleORS",
-    "version": "7.0-25",
+    "version": "7.0-26",
     "author": "ORS",
     "description": "Dashboard widget to mass enable/disable triggers by filters.",
     "widget": {
         "size": {
             "width": 6,
             "height": 4
-        }
+        },
+        "js_class": "CWidgetTriggerToggleORS"
     },
     "actions": {
         "widget.trigger_toggle_ors.view": {
@@ -19,6 +20,9 @@
         }
     },
     "assets": {
+        "js": [
+            "class.widget.7_0_24.js"
+        ],
         "css": [
             "widget.7_0_13.css",
             "form.css"
