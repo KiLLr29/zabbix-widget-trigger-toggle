@@ -30,9 +30,12 @@ $toggle_button = (new CSubmit('trigger_toggle_submit', $state_label))
 	->addClass('js-trigger-toggle')
 	->addClass($state_class);
 
+$toggle_target = 'trigger_toggle_sink';
+
 $toggle_form = (new CForm('post', (new Curl('zabbix.php'))
 	->setArgument('action', 'widget.trigger_toggle_ors.toggle')
 	->getUrl()))
+	->setAttribute('target', $toggle_target)
 	->addVar('toggle_action', $data['next_toggle_action'])
 	->addVar('triggerids', $data['triggerids_csv'])
 	->addVar('dashboardid', $dashboardid)
@@ -51,7 +54,14 @@ $summary = (new CDiv([
 ]))->addClass('trigger-summary');
 
 $content = [
-	(new CDiv($toggle_form))->addClass('trigger-toggle-wrap')
+	(new CDiv([
+		(new CTag('iframe', true))
+			->setAttribute('name', $toggle_target)
+			->setAttribute('title', 'trigger-toggle-sink')
+			->setAttribute('onload', "if (this.dataset.loaded === '1') { window.location.reload(); } this.dataset.loaded = '1';")
+			->setAttribute('style', 'display:none;width:0;height:0;border:0;'),
+		$toggle_form
+	]))->addClass('trigger-toggle-wrap')
 ];
 
 if ($data['show_summary']) {

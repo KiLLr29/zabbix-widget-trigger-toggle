@@ -4,8 +4,7 @@ namespace Modules\TriggerToggleORS\Actions;
 
 use API;
 use CController;
-use CControllerResponseRedirect;
-use CUrl;
+use CControllerResponseData;
 
 class WidgetToggle extends CController {
 
@@ -58,12 +57,7 @@ class WidgetToggle extends CController {
             }
         }
 
-        $return_url = $this->buildReturnUrl(
-            $this->getInput('return_url', ''),
-            (string) $this->getInput('dashboardid', '')
-        );
-
-        $this->setResponse(new CControllerResponseRedirect($return_url));
+        $this->setResponse(new CControllerResponseData([]));
     }
 
     private function normalizeIds(string $triggerids): array {
@@ -88,36 +82,4 @@ class WidgetToggle extends CController {
         return defined('TRIGGER_STATUS_DISABLED') ? TRIGGER_STATUS_DISABLED : 1;
     }
 
-    private function buildReturnUrl($return_url, string $dashboardid): CUrl {
-        $resolved_dashboardid = '';
-
-        if ($dashboardid !== '' && preg_match('/^\d+$/', $dashboardid) === 1) {
-            $resolved_dashboardid = $dashboardid;
-        }
-
-        if (is_string($return_url) && $return_url !== '') {
-            $parts = parse_url($return_url);
-
-            if (is_array($parts) && array_key_exists('query', $parts) && is_string($parts['query'])) {
-                parse_str($parts['query'], $query);
-
-                if (($query['action'] ?? '') === 'dashboard.view') {
-                    $url_dashboardid = (string) ($query['dashboardid'] ?? '');
-
-                    if ($url_dashboardid !== '' && preg_match('/^\d+$/', $url_dashboardid) === 1) {
-                        $resolved_dashboardid = $url_dashboardid;
-                    }
-                }
-            }
-        }
-
-        $safe_url = (new CUrl('zabbix.php'))
-            ->setArgument('action', 'dashboard.view');
-
-        if ($resolved_dashboardid !== '') {
-            $safe_url->setArgument('dashboardid', $resolved_dashboardid);
-        }
-
-        return $safe_url;
-    }
 }
